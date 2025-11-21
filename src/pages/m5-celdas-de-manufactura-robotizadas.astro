@@ -24,47 +24,54 @@ import HeroSection from '../components/HeroSection.astro';
      SECCIÓN - PROCESOS SUSCEPTIBLES DE AUTOMATIZACIÓN
     ========================== -->
     <section class="py-16 bg-white dark:bg-gray-800">
-      <div class="container-custom">
-        <div class="text-center max-w-3xl mx-auto mb-10 px-4">
-          <span class="inline-block px-4 py-1 rounded-full bg-accent-50 text-info-50 dark:bg-accent-950 dark:text-100 font-medium text-sm mb-4">
-            Procesos susceptibles de automatización
-          </span>
-          <h2 class="text-2xl md:text-3xl mb-4 text-gray-900 dark:text-white">Procesos susceptibles de automatización</h2>
-        </div>
-    
-        <div class="max-w-4xl mx-auto text-gray-700 dark:text-gray-300 text-justify space-y-6 px-4">
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">1. Manipulación de piezas pesadas entre operaciones</h3>
-          <ul class="list-disc list-inside space-y-2">
-            <li>
-              <strong>Problema:</strong> El proceso actual de fabricación de los motorreductores presenta una limitación significativa en la manipulación de las piezas entre operaciones, especialmente durante las etapas de desbaste, mandrinado, fresado, rectificado y montaje. Estas operaciones requieren el traslado y posicionamiento de componentes metálicos de gran peso —principalmente ejes, carcasas y ruedas corona—, lo que genera tiempos muertos considerables debido a las maniobras manuales de carga y descarga en las máquinas.
-            </li>
-            <li>
-              <strong>Automatización propuesta:</strong>
-              <ul class="list-disc list-inside ml-6 space-y-1">
-                <li>Uso de <strong>robots industriales de 6 ejes</strong> con <strong>grippers adaptativos o magnéticos</strong> para la carga/descarga de piezas en torno, fresadora, rectificadora, etc.</li>
-                <li>Los robots pueden ubicarse en <strong>celdas compartidas</strong> entre 2 o 3 máquinas CNC.</li>
-                <li>Implementar <strong>paletizado automático</strong> para el almacenamiento intermedio.</li>
-              </ul>
-            </li>
-          </ul>
-    
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8">2. Transporte interno entre estaciones</h3>
-          <ul class="list-disc list-inside space-y-2">
-            <li>
-              <strong>Problema:</strong> El transporte entre estaciones (por ejemplo, del fresado a la limpieza o del rectificado al montaje) se realiza actualmente de forma manual. Este desplazamiento interno representa una porción importante del Lead Time total (PLT = 383,5 h), y no aporta valor agregado al producto. Además, la disposición física del taller genera trayectos largos e ineficientes que dificultan la sincronización del flujo de materiales.
-            </li>
-            <li>
-              <strong>Automatización propuesta:</strong>
-              <ul class="list-disc list-inside ml-6 space-y-1">
-                <li>Incorporar <strong>AGVs (vehículos guiados automáticos)</strong> o <strong>AMRs (robots móviles autónomos)</strong> que trasladen bandejas o pallets entre estaciones.</li>
-                <li>Integración con el sistema de control de producción para asignación de rutas automáticas.</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
+        <div class="container-custom">
+          <div class="text-center max-w-3xl mx-auto mb-10 px-4">
+            <span class="inline-block px-4 py-1 rounded-full bg-accent-50 text-info-50 dark:bg-accent-950 dark:text-100 font-medium text-sm mb-4">
+              Procesos susceptibles de automatización
+            </span>
+            <h2 class="text-2xl md:text-3xl mb-4 text-gray-900 dark:text-white">
+              Procesos susceptibles de automatización
+            </h2>
+          </div>
+      
+          <!-- Párrafo introductorio -->
+          <div class="max-w-4xl mx-auto mb-10 px-4 text-gray-700 dark:text-gray-300">
+            <p>
+              Se consideraron 5 aspectos de la planta que se podían automatizar: Transporte de piezas, posicionamiento de material en los centros de maquinado y tornos, 
+              clasificación de piezas para ensamble, almacenamiento, y ensamble, se presentan las ventajas de desventajas de automatizar cada aspecto y posteriormente la desición justificada de qué se va a automatizar junto con el diseño de la celda.
 
+            </p>
+          </div>
+      
+          <!-- Dos columnas: ventajas / desventajas -->
+          <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+            
+            <!-- Columna 1: Ventajas -->
+            <div class="bg-accent-50 dark:bg-gray-900 p-6 rounded-xl shadow">
+              <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Ventajas</h3>
+              <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                <li>Aumento en la productividad.</li>
+                <li>Reducción de errores humanos.</li>
+                <li>Operación constante 24/7.</li>
+                <li>Mejora de la trazabilidad y control del proceso.</li>
+              </ul>
+            </div>
+      
+            <!-- Columna 2: Desventajas -->
+            <div class="bg-accent-50 dark:bg-gray-900 p-6 rounded-xl shadow">
+              <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Desventajas</h3>
+              <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                <li>Costos iniciales elevados.</li>
+                <li>Requiere mantenimiento especializado.</li>
+                <li>No es adecuado para procesos altamente variables.</li>
+                <li>Riesgo de dependencia tecnológica.</li>
+              </ul>
+            </div>
+      
+          </div>
+      
+        </div>
+    </section>
 
     <!-- =========================
      SECCIÓN - CRITERIOS CUANTITATIVOS PARA ELEGIR MODELO EXACTO
