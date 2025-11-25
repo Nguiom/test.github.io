@@ -90,12 +90,12 @@
 - [x] 1.  Introducción a la Automatización en Manufactura
 - [x] 2.  Gestión y evaluación de la producción automatizada
 - [x] 3.  Planeación y evaluación del proyecto
- - [x]    1.  Evaluación ecónomica de proyecto
-- [ ] 4.  Celdas de manufactura robotizadas
+    - [x]    1.  Evaluación ecónomica de proyecto
+- [x] 4.  Celdas de manufactura robotizadas
 - [ ] 5.  Tecnologías modernas aplicadas a la Automatización
- - [ ]     1.  Virtualización de fábrica
+    - [ ]     1.  Virtualización de fábrica
 - [ ] 6.  Automatización Discreta
- - [ ]     1.  Controladores Industriales
- - [ ]     2.  Sistema de supervisión SCADA
+    - [x]     1.  Controladores Industriales
+    - [ ]     2.  Sistema de supervisión SCADA
 
 
