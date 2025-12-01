@@ -1,18 +1,41 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import PricingCmp from '../components/Pricing.astro';
+import Newsletter from '../components/Newsletter.astro';
 import Footer from '../components/Footer.astro';
 import HeroSection from '../components/HeroSection.astro';
 ---
 
-<Layout title="Los4Automaticos - Módulo 7: Controladores Industriales" description="Explora el desglose del problema de control secuencial en operaciones, etapas, transiciones y modos, con su implementación mediante lógica programada usando Grafcet y Ladder.">
+<Layout title="Los4Automaticos - Módulo 2: Gestión de Producción" description="">
   <Header />
   <main>
     <HeroSection 
-      title="Módulo 7: Controladores Industriales" 
-      highlightText="Módulo 7:"
-      description="Este módulo explica el desglose del problema de control secuencial en operaciones, etapas, transiciones y modos, con su implementación mediante lógica programada usando Grafcet y Ladder."
+      title="Módulo 2: Gestión de Producción" 
+      highlightText="Módulo 2:"
+      description="Se presentan los diagramas asociados a la gestión y evaluación de la producción automatizada en una etapa preliminar"
     />
+
+    <!-- SECCIÓN: Imágenes y diagramas individuales -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+      <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-10">
+        Diagramas y análisis de la celda de manufactura
+      </h2>
+
+      <!-- Operación del proceso -->
+      <div>
+        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4 text-center">
+          Operación del proceso
+        </h3>
+        <div class="flex justify-center">
+          <img src="../images/APM_D_PROCESO.png" alt="Operación del proceso" class="w-[700px] rounded-lg shadow-md object-contain">
+        </div>
+      </div>
+      
+
+
   </main>
   <Footer />
-</Layout> 
+</Layout>
+
+
