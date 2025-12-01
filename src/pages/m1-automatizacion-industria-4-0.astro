@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import HeroSection from '../components/HeroSection.astro';
 ---
 
-<Layout title="Los4Automaticos - Módulo 1: Automatización e Industria 4.0" description="Explora el Módulo 1 de Los4Automaticos, donde se desarrollan diagramas de instrumentación del proceso, identificando sensores y actuadores clave, así como la arquitectura de control y sus comunicaciones. Integra tecnologías de Industria 4.0 como el gemelo digital y el IIoT, además de averiguar una posibl;e implementación de un MES usando power BI.">
+<Layout title="Los4Automaticos - Módulo 1: Automatización e Industria 4.0" description="Explora el Módulo 1 de Los4Automaticos, donde presentamos diagramas de instrumentación de algunos procesos, identificando sensores y actuadores clave, así como la arquitectura de control y sus comunicaciones. Integrando tecnologías de Industria 4.0 como el gemelo digital y el IIoT a tráves del uso de contenedores en la Nube de software SCADA.">
   <Header />
   <main>
 
@@ -15,32 +15,6 @@ import HeroSection from '../components/HeroSection.astro';
 	  description="En este módulo se presentarán los diagramas de instrumentación de cada proceso, identificando  sus sensores y actuadores clave, así como la arquitectura de control y comunicaciones, el montoreo de los sitemas, incluyendo los protocolos y niveles de automatización establecidos en la norma ISO-95. El obejetivo es la integracióbn de tecnologías de Industria 4.0 como lo son la virtualización de fábrica, el IIoT y el Cloud Computing, con tecnologías modernas de MES como Power BI y contenedores en Azure. Analizando su propósito e impacto mejorando los indicadores clave de desempeño (KPIs) de producción"
     />
     
-    
-
-    <!-- VSM Viejito -->
-    <!--
-    <section class="section relative z-10 overflow-hidden py-12 md:py-16">
-      <div class="container-custom">
-
-        <div class="text-center max-w-3xl mx-auto mb-8 md:mb-16 px-4">
-          <span class="inline-block px-4 py-1 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-300 font-medium text-sm mb-4">
-            Pre-automatización
-          </span>
-          <h2 class="text-2xl md:text-3xl mb-4 md:mb-6 text-gray-900 dark:text-white">Diagrama VSM</h2>
-          <p class="text-gray-600 dark:text-gray-300">
-            Analisis de producción en la pre-automatización.
-          </p>
-        </div>
-
-        <div class="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
-          padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
-          border-radius: 8px; will-change: transform;">
-
-        </div> 
-      </div>
-    </section>
-
-    -->
 
     <section class="section bg-linear-to-b from-white to-primary-50 dark:from-primary-700 dark:to-primary-800 relative overflow-hidden py-12 md:py-16">
       <div class="container-custom">
@@ -75,13 +49,21 @@ import HeroSection from '../components/HeroSection.astro';
           <span class="inline-block px-4 py-1 rounded-full bg-accent-50 dark:bg-accent-950 text-info-400 dark:text-info-100 font-medium text-sm mb-4">
             Comunicaciones
           </span>
-          <h2 class="text-2xl md:text-3xl mb-4 md:mb-6 text-gray-900 dark:text-white">Arquitecturas de Comunicación y control preliminares</h2>
+          <h2 class="text-2xl md:text-3xl mb-4 md:mb-6 text-gray-900 dark:text-white">Arquitecturas de Comunicación y control</h2>
           <p class="text-secondary-700 dark:text-gray-200">
-		  Las comunicaciones son una de las partes más importantes si no es que la más importante de una planta automatizada. Pues si no hay comunicación no hay una adecuada coordinación de los sistemas y niveles de la pirámide vista anteriormente. Es por esto que escogemos conexiones por medio de ethernet/IP para asegurar una conexión rápida, robusta, segura y estable entre los niveles de planta, control y monitoreo y supervisión. Mientras que para la comunicación entre los niveles de monitoreo y supervisión y los niveles superiores como Gestionamiento de la operación de manufactura y planeamiento y logística de la empresa. Tendremos comunicación por medio de servicios en la Nube. Esto debido no sólo a la diferencia en el tiempo en que estos niveles manipularn información, sino también por la naturaleza y cantidad de datos manejados.<br>
-		  Para los niveles de planta y Control y manipulación se hace necesario tener un arquitectura de control capaz de manejar las variables y de mantener nuestros procesos en sus puntos más óptimos. Para ello utilizaremos PLCs de seguridad de Allen-Bradley GuardLogix, programados a través del software Studio 5000, de esta forma nos aseguramos que la planta tenga sistemas seguros en todos sus puntos, es decir tanto en sus entradas y salidas como en su arquitectura de control.
+		  Utilizamos una arquietectura de control de tipo jerárquica y estática, donde todos los sensores y casi todos los actuadores son controlados por un sólo PLC. Algunas máquinas tendrán sus controladores propios debido a su arquitectura o necesidades como el control de movimiento de alto desempeño. Estos controladores recibirán órdenes y se comunicarán con el controlador principal mediante comunicaciones OPC, donde el PLC principal publicará los tag necesarios en el servidor para que estos sean consumidos por los otros controladores. Por supuesto, para garantizar el máximo tiempo de operación se tendrá mínimo una redundancia en caso de que el PLC principal llegue a fallar.
+		  Algunas de las máquinas más importantes dentro de nuestra propuesta son: un Robot ABB IRB660 con una carga de trabajo de mínimo 130kg con su respectivo controlador ABB IRC5 así como los sensores infrarrojos E3Z-LTY81-D-M1J de la marca OMROM, los cuales permiten la detección de piezas de gran variabilidad de tamaños gracias a su buen rango de lectura. Así mismo en este nivel tenemos un ServoDrive ACS480.
+		  Para los niveles de Planta y Control y manipulación se hace necesario tener un PLC capaz de utilizar rutinas de alto desempeño al mismo tiempo que tenga capacidad de ser programado con rutinas de seguridad. Para ello utilizaremos PLCs de seguridad de Allen-Bradley Compact GuardLogix 5380, programados a través del software Studio 5000. Ádemas de los módulos básicos de alimentación y comunicaciones por Ethernet/IP como el 5069-L350ERMS2, también vamos a necesitar módulos de entradas Digitales 5069-IB8S y módulo de salidas Digitales 5069-OBV8S. Esto es porque queremos que nuestra propuesta de automatización tenga una arquietectura de control completamente segura, no sólo en la lógica de la misma y en elementos de mitigación de riesgo como jaulas o barreras infrarrojas, sino también en las entradas y salidas de la arquitectura de control de la celda.
+		  En el caso de las entradas y salidas analógicas, el compact guardlogix no posee dichos módulos y tampoco se utilizxan entradas ni salidas de tipo analógico dentro de esta propuesta, así que simplemente no las vamos a utilizar.
+
+		  <img src="../images/CompactGuardLogix.png">
+
+		  También utlizaremos el protocol de comunicaciones MQTT para conectar todo con un HMI creado en el software Ignition, de Inductive Automation, el cual estará hosteado en un servido en la nube gracias a los servicios de la plataforma Microsoft Azure. Así cualquier persona, desde cualquier parte del mundo podrá conectarse al servidor, provisto tengan un usuario y contraseña dentro del servidor SCADA.
 		  </p>
           <p class="text-secondary-700 dark:text-gray-300 text-left">
-            En el nivel de supervisión se encuentrará una pantalla HMI táctil para permitir a los operarios monitorizar y realizar ajustes al proceso.
+		  En el nivel de supervisión de la pirámide, tendremos un servicio en la nube, tal que cualquier persona desde cualquier parte del mundo con conexión a internet sea capaz de observar y monitorizar el proceso.
+		  También vamos a tener de forma permanente una pantalla táctil MT043-WST4B-F1R1C16 la cual tiene como objetivo mostrat información en tiempo real del proceso, muestra mensajes de emergencia y permite al operario interactuar accionar distintas rutinas dentro de la celda sin necesidad de estar cerca de la misma.
+		  <img src="../images/HMI.png">
           </p>
         </div>
       </div>
@@ -94,9 +76,9 @@ import HeroSection from '../components/HeroSection.astro';
           <h2 class="text-2xl md:text-3xl mb-4 md:mb-6 text-gray-900 dark:text-white">Tecnologías de Industria 4.0 y relación con la transformación digital</h2>
           <p class="text-secondary-800 dark:text-secondary-50 mb-6 md:mb-8 text-left">
             Se propone integrar la siguientes tecnologías de la industria 4.0 al proyecto con el objetivo de mejorar sus indicadores Clave de Desempeño (KPIs) <br>
-			Digital Twin (Modelo Ciberfísico): Al tener un sistema digitalizado pero que se puede comnuicar con el mundo físico, tenemos un sistema en el que se pueden realizar pruebas y observar cambios en los procesos antes de llevarlos a producción real, lo cual acelera la implementación de nuevas tecnologías y ahorra muchísimos costos.<br>
-			IIoT (Internet Industrial de las Cosas):  Utilizando dispositivos I/O, de sensórica y controladores con la capacidad de enviar datos de forma directa a los niveles de monitreamiento y supervisión. Lo que ayuda a circumnavegar uno de los desafíos de la automatización: Comunicar niveles distintos de la pirámide de  Automatización de manera rápida, eficiente y en tiempo real.<br>
-			Software MEs (Integrado con Power BI): Esto p[ermite a los niveles de Gestión de operaciones de manufactura obtener acceso a los mismos datos que el nivel inmediatamente inferior de forma más rápida y organizada, ademas de ser capaz de generar indicadores en tiempo real de la operación de producción. Indicadores como pueden ser el OEE, el tiempo total de manufactura (Lead Time), etc.
+			Digital Twin (Modelo Ciberfísico): Al tener un sistema digitalizado pero que se puede comunicar con el mundo físico, tenemos un sistema en el que se pueden realizar pruebas y observar cambios en los procesos antes de llevarlos a producción real, lo cual acelera la implementación de nuevas tecnologías y ahorra muchísimos costos.<br>
+			IIoT (Internet Industrial de las Cosas):  Utilizando dispositivos I/O, de sensórica y controladores con la capacidad de enviar datos de forma directa a los niveles de monitreamiento y supervisión. Lo que ayuda a circumnavegar uno de los desafíos de la automatización: Comunicar niveles distintos de la pirámide de  Automatización de manera rápida, eficiente y en tiempo real. Un ejemplo de esto podría ser la utilización de sensores que sean capaces de enviar de forma sus datos a un servidor OPC o a un broker MQTT.<br>
+			Software MEs (Integrado con Power BI u otro software): Esto p[ermite a los niveles de Gestión de operaciones de manufactura obtener acceso a los mismos datos que el nivel inmediatamente inferior de forma más rápida y organizada, ademas de ser capaz de generar indicadores en tiempo real de la operación de producción. Indicadores como pueden ser el OEE, el tiempo total de manufactura (Lead Time), etc.
           </p>
         </div>
       </div>
