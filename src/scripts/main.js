@@ -2,7 +2,7 @@
 import Alpine from 'alpinejs';
 
 // Import component data
-import './components/pyramid.js';
+import './components/Pyramid.js';
 
 // Start Alpine
 Alpine.start();
