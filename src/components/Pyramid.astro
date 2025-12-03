@@ -1,0 +1,275 @@
+---
+import { useState } from 'preact/hooks';
+import Flashcard from './Flashcard.astro';
+
+// Definiendo los niveles de la pirámide
+const pyramidLevels = [
+  {
+    id: 1,
+    title: "Business Planning and Logistics",
+    description: "La herramienta a usar es el ERP (Enterprise Resource Planning). Este nivel se encarga de la planificación estratégica, gestión de recursos empresariales, finanzas, cadena de suministro y logística a nivel corporativo.",
+    area: "top"
+  },
+  {
+    id: 2,
+    title: "Manufacturing Operations Management",
+    description: "Sistemas MES (Manufacturing Execution System). Este nivel gestiona las operaciones de producción, programación, ejecución, seguimiento y documentación de los procesos de fabricación.",
+    area: "upper-middle"
+  },
+  {
+    id: 3,
+    title: "Monitoring & Supervision",
+    description: "Aquí es donde se encuentran los sistemas SCADA (System Control And Data Acquisition) y HMI (Human Machine Interface). Este nivel supervisa y controla los procesos en tiempo real, proporcionando interfaces para operadores.",
+    area: "middle"
+  },
+  {
+    id: 4,
+    title: "Sensing & Manipulation",
+    description: "Donde los Controladores Industriales (PLCs y PACs) manejan las máquinas. Este nivel incluye la automatización de procesos específicos, control de dispositivos y adquisición de datos de sensores.",
+    area: "lower-middle"
+  },
+  {
+    id: 5,
+    title: "Production Process",
+    description: "También llamado nivel de planta o Floor level. Este nivel incluye las máquinas, sensores, actuadores y dispositivos físicos que realizan el trabajo de producción real.",
+    area: "bottom"
+  }
+];
+
+// flashcards que se pueden clickear
+const clickableAreas = [
+  { id: 1, coords: "50,10,150,60", shape: "rect", levelId: 1 },
+  { id: 2, coords: "75,60,125,110", shape: "rect", levelId: 2 },
+  { id: 3, coords: "100,110,150,160", shape: "rect", levelId: 3 },
+  { id: 4, coords: "125,160,175,210", shape: "rect", levelId: 4 },
+  { id: 5, coords: "150,210,200,260", shape: "rect", levelId: 5 }
+];
+
+const [activeFlashcard, setActiveFlashcard] = useState(null);
+
+const openFlashcard = (levelId) => {
+  setActiveFlashcard(levelId);
+};
+
+const closeFlashcard = () => {
+  setActiveFlashcard(null);
+};
+
+// obtener el texto de cada flashcard
+const activeLevel = pyramidLevels.find(level => level.id === activeFlashcard);
+---
+
+<div class="interactive-pyramid">
+  <div class="pyramid-container">
+    <!-- Imagen con las flashcards -->
+    <div class="pyramid-image-wrapper">
+      <img 
+        src="../images/PiramideISA95.png" 
+        alt="Pirámide de la Automatización de Acuerdo a la norma ISA-95" 
+        class="pyramid-image"
+        use:map
+      />
+      
+      <!-- superposición de las flashcards con la imagen -->
+      <div class="clickable-areas">
+        {clickableAreas.map(area => (
+          <button
+            class={`clickable-area ${area.shape}`}
+            style={`
+              left: ${area.coords.split(',')[0]}px;
+              top: ${area.coords.split(',')[1]}px;
+              width: ${parseInt(area.coords.split(',')[2]) - parseInt(area.coords.split(',')[0])}px;
+              height: ${parseInt(area.coords.split(',')[3]) - parseInt(area.coords.split(',')[1])}px;
+            `}
+            onClick={() => openFlashcard(area.levelId)}
+            aria-label={`Learn about ${pyramidLevels.find(l => l.id === area.levelId)?.title}`}
+          />
+        ))}
+      </div>
+    </div>
+    
+    <!-- etiquetas de los niveles para referencia -->
+    <div class="pyramid-labels">
+      {pyramidLevels.map((level, index) => (
+        <div class="pyramid-label" key={level.id}>
+          <span class="label-number">{level.id}.</span>
+          <span class="label-text">{level.title}</span>
+          <button 
+            class="label-button"
+            onClick={() => openFlashcard(level.id)}
+          >
+            Más info
+          </button>
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <!-- Flashcard component -->
+  {activeLevel && (
+    <Flashcard 
+      title={activeLevel.title}
+      description={activeLevel.description}
+      isVisible={true}
+      onClose={closeFlashcard}
+    />
+  )}
+</div>
+
+<style>
+  .interactive-pyramid {
+    position: relative;
+    margin: 2rem 0;
+  }
+  
+  .pyramid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .pyramid-container {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+  
+  .pyramid-image-wrapper {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .pyramid-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .clickable-areas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .clickable-area {
+    position: absolute;
+    background: transparent;
+    border: 2px solid rgba(59, 130, 246, 0);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+  }
+  
+  .clickable-area:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.5);
+  }
+  
+  .clickable-area.rect {
+    border-radius: 4px;
+  }
+  
+  .pyramid-labels {
+    flex: 1;
+    max-width: 500px;
+  }
+  
+  .pyramid-label {
+    background: white;
+    border-left: 4px solid #3b82f6;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+  }
+  
+  .pyramid-label:hover {
+    transform: translateX(4px);
+  }
+  
+  .label-number {
+    display: inline-block;
+    background: #3b82f6;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    margin-right: 0.75rem;
+    font-weight: bold;
+  }
+  
+  .label-text {
+    font-weight: 600;
+    color: #1f2937;
+    margin-right: 1rem;
+  }
+  
+  .label-button {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    float: right;
+  }
+  
+  .label-button:hover {
+    background: #2563eb;
+  }
+  
+  /* Dark mode styles */
+  .dark .pyramid-label {
+    background: #374151;
+    border-left-color: #60a5fa;
+  }
+  
+  .dark .label-number {
+    background: #60a5fa;
+  }
+  
+  .dark .label-text {
+    color: #f3f4f6;
+  }
+  
+  .dark .label-button {
+    background: #60a5fa;
+  }
+  
+  .dark .label-button:hover {
+    background: #3b82f6;
+  }
+</style>
+
+<script>
+  // interactividad con javascript
+  if (typeof window !== 'undefined') {
+    // efecto cuando el mouse pase por las áreas
+    document.addEventListener('DOMContentLoaded', () => {
+      const areas = document.querySelectorAll('.clickable-area');
+      
+      areas.forEach(area => {
+        area.addEventListener('mouseenter', (e) => {
+          e.target.style.backgroundColor = 'rgba(59, 130, 246, 0.15)';
+          e.target.style.borderColor = 'rgba(59, 130, 246, 0.7)';
+        });
+        
+        area.addEventListener('mouseleave', (e) => {
+          e.target.style.backgroundColor = 'transparent';
+          e.target.style.borderColor = 'rgba(59, 130, 246, 0)';
+        });
+      });
+    });
+  }
+</script>
