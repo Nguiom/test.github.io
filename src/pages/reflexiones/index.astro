@@ -37,6 +37,55 @@ const posts = [
 
 ---
 
-<Layout title="Reflexiones">
-  <REFLEXIONES />
+<Layout title="Reflexiones - Los4Automaticos" description="REflexiones sobre el proyecto Los4Automaticos, desarollo dl proyecto y aprendizajes.">
+  <Header />
+  <main>
+    <HeroSection 
+      title="Reflexiones sobre el Proyecto Los4Automaticos" 
+      highlightText="Reflexiones"
+      description="En esta sección encontrarás reflexiones sobre el proyecto Los4Automaticos, incluyendo aprendizajes, desafíos y logros alcanzados durante su desarrollo."
+    />
+    
+    <!-- Category Filter -->
+    <div class="container-custom py-8">
+      
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        {posts.map((post, index) => (
+          <div class="card border border-gray-200 dark:border-gray-700 overflow-hidden slide-up" style={'animation-delay: ' + (index * 100) + 'ms'}>
+            <a href={'/Los4Automaticos/reflexiones/' + post.id} class="block">
+              <img 
+                src={post.image} 
+                alt={post.title}
+                class="w-full h-60 object-cover"
+                loading="lazy"
+              />
+            </a>
+            <div class="p-6">
+              <a href={'/Los4Automaticos/reflexiones/' + post.id} class="block mb-3">
+                <h2 class="text-xl font-semibold text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors">{post.title}</h2>
+              </a>
+              <p class="text-gray-600 dark:text-gray-300 mb-6">{post.excerpt}</p>
+              <div class="flex items-center">
+
+                <p class="font-medium text-gray-900 dark:text-white">{post.author}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- 
+      <div class="mt-12 flex justify-center">
+        <a href="#" class="btn-outline">
+          Load More Articles
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v10.586l3.293-3.293a1 1 0 011.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L9 14.586V4a1 1 0 011-1z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+      -->
+    </div>
+  </main>
+  <Footer />
 </Layout>
