@@ -1,4 +1,47 @@
-
+:root {
+  /* Light mode (Latte) */
+  
+  --pyramid-level4-fill-latte: #d20f39;    /* red */
+  --pyramid-level4-stroke-latte:#e64553;  /* maroon */
+  --pyramid-level4-text-latte: #4c4f69;    /* Text */
+  
+  --pyramid-level3-fill-latte: #40a02b;    /* green */
+  --pyramid-level3-stroke-latte: #179299;  /* teal */
+  --pyramid-level3-text-latte: #4c4f69;    /* Text */
+  
+  --pyramid-level2-fill-latte: #df8e1d;    /* yellow */
+  --pyramid-level2-stroke-latte: #fe640b;  /* peach */
+  --pyramid-level2-text-latte: #ffffff;    /* White for contrast */
+  
+  --pyramid-level1-fill-latte: #1e66f5;    /* blue */
+  --pyramid-level1-stroke-latte: #209fb5;  /* sapphire */
+  --pyramid-level1-text-latte: #ffffff;    /* White for contrast */
+  
+  --pyramid-level0-fill-latte: #ea76cb;    /* pink */
+  --pyramid-level0-stroke-latte: #8839ef;  /* mauve */
+  --pyramid-level0-text-latte: #ffffff;    /* Text */
+    /* Dark mode (Mocha) */
+    
+    --pyramid-level4-fill-mocha: #f38ba8;    /* red */
+    --pyramid-level4-stroke-mocha: #eba0ac;  /* maroon */
+    --pyramid-level4-text-mocha: #6c7086;    /* overlay 0*/
+    
+    --pyramid-level3-fill-mocha: #a6e3a1;    /* green */
+    --pyramid-level3-stroke-mocha: #94e2d5;  /* teal */
+    --pyramid-level3-text-mocha: #6c7086;    /* overlay 0*/
+    
+    --pyramid-level2-fill-mocha: #f9e2af;    /* yellow */
+    --pyramid-level2-stroke-mocha: #fab387;  /* maroon */
+    --pyramid-level2-text-mocha: #1e1e2e;    /* Base (dark for contrast) */
+    
+    --pyramid-level1-fill-mocha: #89b4fa;    /* blue */
+    --pyramid-level1-stroke-mocha: #74c7ec;  /* sapphire */
+    --pyramid-level1-text-mocha: #1e1e2e;    /* Base (dark for contrast) */
+    
+    --pyramid-level0-fill-mocha: #f5c2e7;    /* pink */
+    --pyramid-level0-stroke-mocha: #cba6f7;  /* mauve */
+    --pyramid-level0-text-mocha: #1e1e2e;    /* Base (dark for contrast)*/
+  }
 /* /src/styles/InteractivePyramid.css */
 .interactive-pyramid {
   position: relative;
@@ -115,29 +158,3 @@
   background: #2563eb;
 }
 
-/* Dark mode styles - using data-theme if that's what you're using */
-:root[data-theme="dark"] .pyramid-label,
-.dark .pyramid-label {
-  background: #374151;
-  border-left-color: #60a5fa;
-}
-
-:root[data-theme="dark"] .label-number,
-.dark .label-number {
-  background: #60a5fa;
-}
-
-:root[data-theme="dark"] .label-text,
-.dark .label-text {
-  color: #f3f4f6;
-}
-
-:root[data-theme="dark"] .label-button,
-.dark .label-button {
-  background: #60a5fa;
-}
-
-:root[data-theme="dark"] .label-button:hover,
-.dark .label-button:hover {
-  background: #3b82f6;
-}

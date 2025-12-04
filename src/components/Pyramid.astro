@@ -38,15 +38,15 @@ interface PyramidLevel {
     <polygon
       id="level4"
       points="350,200 450,200 400,100"
-      class="fill-blue-300 hover:fill-blue-400 stroke-2 stroke-blue-600 transition-all duration-200"
-      :class="{ 'fill-blue-500': activeLevel === 4 }"
+	  class="fill-[var(--pyramid-level4-fill-latte)] hover:brightness-110 stroke-2 stroke-[var(--pyramid-level4-stroke-latte)] dark:fill-[var(--pyramid-level4-fill-mocha)] dark:stroke-[var(--pyramid-level4-stroke-mocha)] transition-all duration-200"
+	  :class="{ 'brightness-125 saturate-150': activeLevel === 4 }"
       data-level="4"
     />
     <text 
       x="400" 
       y="140" 
       text-anchor="middle"
-      class="text-base font-bold fill-blue-900 pointer-events-none"
+	  class="text-base font-bold fill-[var(--pyramid-level4-text-latte)] dark:fill-[var(--pyramid-level4-text-mocha)] pointer-events-none"
     >
       Level 4: Business Planning
     </text>
@@ -55,11 +55,11 @@ interface PyramidLevel {
     <polygon
       id="level3"
       points="300,300 500,300 450,200 350,200"
-      class="fill-green-300 hover:fill-green-400 stroke-2 stroke-green-600 transition-all duration-200"
-      :class="{ 'fill-green-500': activeLevel === 3 }"
+	  class="fill-[var(--pyramid-level3-fill-latte)] hover:brightness-110 stroke-2 stroke-[var(--pyramid-level3-stroke-latte)] dark:fill-[var(--pyramid-level3-fill-mocha)] dark:stroke-[var(--pyramid-level3-stroke-mocha)] transition-all duration-200"
+	  :class="{ 'brightness-125 saturate-150': activeLevel === 3 }"
       data-level="3"
     />
-    <text x="400" y="250" text-anchor="middle" class="text-base font-bold fill-green-900 pointer-events-none">
+    <text x="400" y="250" text-anchor="middle" class="text-base font-bold fill-[var(--pyramid-level3-text-latte)] dark:fill-[var(--pyramid-level3-text-mocha)] pointer-events-none">
       Level 3: Mfg Operations
     </text>
     
@@ -67,11 +67,11 @@ interface PyramidLevel {
     <polygon
       id="level2"
       points="250,400 550,400 500,300 300,300"
-      class="fill-yellow-300 hover:fill-yellow-400 stroke-2 stroke-yellow-600 transition-all duration-200"
-      :class="{ 'fill-yellow-500': activeLevel === 2 }"
+	  class="fill-[var(--pyramid-level2-fill-latte)] hover:brightness-110 stroke-2 stroke-[var(--pyramid-level2-stroke-latte)] dark:fill-[var(--pyramid-level2-fill-mocha)] dark:stroke-[var(--pyramid-level2-stroke-mocha)] transition-all duration-200"
+	  :class="{ 'brightness-125 saturate-150': activeLevel === 2 }"
       data-level="2"
     />
-    <text x="400" y="350" text-anchor="middle" class="text-base font-bold fill-yellow-900 pointer-events-none">
+    <text x="400" y="350" text-anchor="middle" class="text-base font-bold fill-[var(--pyramid-level2-text-latte)] dark:fill-[var(--pyramid-level2-text-mocha)] pointer-events-none">
       Level 2: Supervisory Control
     </text>
     
@@ -79,11 +79,11 @@ interface PyramidLevel {
     <polygon
       id="level1"
       points="250,400 550,400 600,500 200,500"
-      class="fill-orange-300 hover:fill-orange-400 stroke-2 stroke-orange-600 transition-all duration-200"
-      :class="{ 'fill-orange-500': activeLevel === 1 }"
+	  class="fill-[var(--pyramid-level1-fill-latte)] hover:brightness-110 stroke-2 stroke-[var(--pyramid-level1-stroke-latte)] dark:fill-[var(--pyramid-level1-fill-mocha)] dark:stroke-[var(--pyramid-level1-stroke-mocha)] transition-all duration-200"
+	  :class="{ 'brightness-125 saturate-150': activeLevel === 1 }"
       data-level="1"
     />
-    <text x="400" y="450" text-anchor="middle" class="text-base font-bold fill-orange-900 pointer-events-none">
+    <text x="400" y="450" text-anchor="middle" class="text-base font-bold fill-[var(--pyramid-level1-text-latte)] dark:fill-[var(--pyramid-level1-text-mocha)] pointer-events-none">
       Level 1: Control
     </text>
     
@@ -91,11 +91,11 @@ interface PyramidLevel {
     <polygon
       id="level0"
       points="200,500 600,500 650,600 150,600"
-      class="fill-red-300 hover:fill-red-400 stroke-2 stroke-red-600 transition-all duration-200"
-      :class="{ 'fill-red-500': activeLevel === 0 }"
+	  class="fill-[var(--pyramid-level0-fill-latte)] hover:brightness-110 stroke-2 stroke-[var(--pyramid-level0-stroke-latte)] dark:fill-[var(--pyramid-level0-fill-mocha)] dark:stroke-[var(--pyramid-level0-stroke-mocha)] transition-all duration-200"
+	  :class="{ 'brightness-125 saturate-150': activeLevel === 0 }"
       data-level="0"
     />
-    <text x="400" y="550" text-anchor="middle" class="text-base font-bold fill-red-900 pointer-events-none">
+    <text x="400" y="550" text-anchor="middle" class="text-base font-bold fill-[var(--pyramid-level0-text-latte)] dark:fill-[var(--pyramid-level0-text-mocha)] pointer-events-none">
       Level 0: Process
     </text>
     
@@ -116,15 +116,15 @@ interface PyramidLevel {
     x-transition:leave-end="opacity-0 transform scale-95"
     class="mt-8 max-w-2xl mx-auto"
   >
-    <div class="bg-white rounded-xl shadow-2xl p-5 border-2" :class="getLevelColor(activeLevel)">
+    <div class="bg-secondary-50 rounded-xl shadow-2xl p-5 border-2" :class="getLevelColor(activeLevel)">
       <div class="flex justify-between items-start mb-4">
         <div>
-          <h3 class="text-2xl font-bold" x-text="getLevelName(activeLevel)"></h3>
-          <p class="text-gray-600" x-text="getLevelDescription(activeLevel)"></p>
+          <h3 class="text-2xl font-bold text-info-600 dark:text-info-700" x-text="getLevelName(activeLevel)"></h3>
+          <p class="text-info-50 dark:text-info-100" x-text="getLevelDescription(activeLevel)"></p>
         </div>
         <button 
           @click="activeLevel = null"
-          class="text-gray-500 hover:text-gray-700 text-2xl"
+          class="text-info-400 hover:text-info-950 text-2xl"
           aria-label="Close flashcard"
         >
           &times;
@@ -144,7 +144,7 @@ interface PyramidLevel {
         <button
           @click="previousLevel()"
           :disabled="activeLevel <= 0"
-          class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          class="px-4 py-2 bg-accent-50 hover:bg-accent-300 text-info-50 dark:text-info-100 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           :class="{ 'hidden': activeLevel <= 0 }"
         >
           ← Previous Level
@@ -156,7 +156,7 @@ interface PyramidLevel {
               @click="activeLevel = level"
               class="w-8 h-8 rounded-full border-2"
               :class="[
-                activeLevel === level ? 'scale-125 border-white ring-2 ring-offset-2' : '',
+                activeLevel === level ? 'scale-125 border-info-50 dark:border-info-100 ring-2 ring-offset-2' : '',
                 getLevelColor(level).replace('border-', 'bg-')
               ]"
               :aria-label="`Go to level ${level}`"
@@ -168,7 +168,7 @@ interface PyramidLevel {
         <button
           @click="nextLevel()"
           :disabled="activeLevel >= 4"
-          class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          class="px-4 py-2 bg-accent-50 hover:bg-accent-300 text-info-50 dark:text-info-100 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           :class="{ 'hidden': activeLevel >= 4 }"
         >
           Next Level →
@@ -185,8 +185,8 @@ interface PyramidLevel {
         class="px-4 py-2 rounded-lg font-medium transition-all transform hover:scale-105 active:scale-95"
         :class="[
           activeLevel === level.id 
-            ? 'text-white shadow-lg scale-105' 
-            : 'text-gray-800 hover:shadow',
+            ? 'text-info-600 dark:text-info-700 shadow-lg scale-105' 
+            : 'text-info-50 dark:text-info-100 hover:shadow',
           level.color.replace('fill-', 'bg-')
         ]"
         x-text="`Level ${level.id}: ${level.name}`"
@@ -205,7 +205,7 @@ document.addEventListener('alpine:init', () => {
         id: 0,
         name: 'Production Process',
         description: 'También llamado nivel de planta o floor level. Aquí están algunas de las máquinas más importantes dentro de nuestra propuesta',
-        color: 'border-purple-500',
+        color: 'border-[var(--pyramid-level0-stroke-latte)] dark:border-[var(--pyramid-level0-stroke-mocha)] bg-secondary-50 dark:bg-secondary-950',
         relevance: [
 				'Robot ABB IRB660 con una carga de trabajo de mínimo 130kg con su respectivo controlador ABB IRC5',
 				'Sensores infrarrojos E3Z-LTY81-D-M1J de la marca OMROM, los cuales permiten la detección de piezas de gran variabilidad de tamaños gracias a su buen rango de lectura.',
@@ -216,7 +216,7 @@ document.addEventListener('alpine:init', () => {
         id: 1,
 		name: 'Field Control',
 		description: 'Donde los Controladores Industriales (PLCs y PACs) manejan las máquinas',
-        color: 'border-red-500',
+        color: 'border-[var(--pyramid-level1-stroke-latte)] dark:border-[var(--pyramid-level1-stroke-mocha)] bg-secondary-50 dark:bg-secondary-950',
         relevance: [
 				'Utilizamos una arquietectura de control de tipo jerárquica y estática, donde todos los sensores y casi todos los actuadores son controlados por un sólo PLC. Algunas máquinas tendrán sus controladores propios debido a su arquitectura o necesidades como el control de movimiento de alto desempeño. Estos controladores recibirán órdenes',
 				'Comunicaciones mediante protocolo OPC, donde el PLC principal publicará los tag necesarios en el servidor para que estos sean consumidos por los otros controladores. Por supuesto, para garantizar el máximo tiempo de operación se tendrá mínimo un servidor de redundancia en caso de que el servidor principal llegue a fallar.',
@@ -229,7 +229,7 @@ document.addEventListener('alpine:init', () => {
         id: 2,
         name: 'Monitoring and Supervision',
 		description: 'Aquí es donde se encuentran los sistemas SCADA (System Control And Data Acquisition) y HMI(Humasn Machine Interface)',
-        color: 'border-orange-500',
+        color: 'border-[var(--pyramid-level2-stroke-latte)] dark:border-[var(--pyramid-level2-stroke-mocha)] bg-secondary-50 dark:bg-secondary-950',
         relevance: [
 				'Conectaremos la planta con un servidor de SCADA (Supervisory Control And Data Acquisition) gracias al software Ignition de Inductive Automation',
 				'Además del servidor local, tendremos un contenedor en la nube gracias a los servicios de la plataforma Microsoft Azure. Así cualquier persona, desde cualquier parte del mundo podrá conectarse al servidor, provisto tengan un usuario y contraseña dentro del servidor SCADA.',
@@ -243,7 +243,7 @@ document.addEventListener('alpine:init', () => {
         id: 3,
         name: 'Manufacturing Operations Management',
 		description: 'Sistemas MES (Manufacturing Execution Systrem)',
-        color: 'border-yellow-500',
+        color: 'border-[var(--pyramid-level3-stroke-latte)] dark:border-[var(--pyramid-level3-stroke-mocha)] bg-secondary-50 dark:bg-secondary-950',
         relevance: [
           'Aquí tendremos un software MES (Manufacturing Execution Systems)',
 				'La propuesta es realizarlo mediante el software de Power BI de microsoft, ya que tiene una excelente acoplamiento con los servicios en la nube de microsoft azure',
@@ -253,7 +253,7 @@ document.addEventListener('alpine:init', () => {
         id: 4,
         name: 'Business Planning & Logistics',
 		description: 'La herramienta a usar es el ERP (Enterprise Resource Planning)',
-        color: 'border-green-500',
+        color: 'border-[var(--pyramid-level4-stroke-latte)] dark:border-[var(--pyramid-level4-stroke-mocha)] bg-secondary-50 dark:bg-secondary-950',
         relevance: [
           'ERP (Enterprise Resource Planning)',
 		  'No existe de momento una propuesta sólida del mismo',
@@ -319,7 +319,7 @@ document.addEventListener('alpine:init', () => {
 
     getLevelColor(levelId) {
       const level = this.levels.find(l => l.id === levelId);
-      return level ? level.color : 'border-gray-300';
+      return level ? level.color : 'border-warning-50 dark:border-warning-950';
     },
 
     // Navigation methods
