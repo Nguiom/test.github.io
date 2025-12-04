@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HeroSection from '../components/HeroSection.astro';
+---
+
+<Layout title="Los4Automaticos - Módulo 3: Planeación de Proyecto" description="Descubre cómo planificar y gestionar tu proyecto de manera efectiva con herramientas avanzadas como Bitrix24 y Microsoft Project. Aprende a actualizar cronogramas y adaptarte a cambios en las actividades.">
+  <Header />
+  <main>
+    <HeroSection 
+      title="Resumen" 
+      highlightText=""
+      description="Tiempos antes de automatizar y despues de automatizar. Costo total del proyecto. Tiempo de ejecución del proyecto."
+    />
+
+              <section class="py-16 bg-white dark:bg-gray-800">
+                <div class="max-w-6xl mx-auto px-4">
+                  <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+                    Comparación de Tiempos
+                  </h2>
+              
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Primera tabla -->
+                    <div>
+                      <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3">
+                        Primera tabla
+                      </h3>
+                      <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                          <thead>
+                            <tr class="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-200">
+                              <th class="p-3 border">Indicador</th>
+                              <th class="p-3 border">min</th>
+                              <th class="p-3 border">hr</th>
+                              <th class="p-3 border">día</th>
+                            </tr>
+                          </thead>
+                          <tbody class="text-gray-800 dark:text-gray-100">
+                            <tr>
+                              <td class="p-3 border">Production Lead Time</td>
+                              <td class="p-3 border">65071.0</td>
+                              <td class="p-3 border">1084.5</td>
+                              <td class="p-3 border">45.2</td>
+                            </tr>
+                            <tr>
+                              <td class="p-3 border">Production Lead Time*</td>
+                              <td class="p-3 border">4591.0</td>
+                              <td class="p-3 border">76.5</td>
+                              <td class="p-3 border">3.2</td>
+                            </tr>
+                            <tr>
+                              <td class="p-3 border">Value-Added Time</td>
+                              <td class="p-3 border">2940.0</td>
+                              <td class="p-3 border">49.0</td>
+                              <td class="p-3 border">2.0</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+              
+                    <!-- Segunda tabla -->
+                    <div>
+                      <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3">
+                        Segunda tabla
+                      </h3>
+                      <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                          <thead>
+                            <tr class="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-200">
+                              <th class="p-3 border">Indicador</th>
+                              <th class="p-3 border">min</th>
+                              <th class="p-3 border">hr</th>
+                              <th class="p-3 border">día</th>
+                            </tr>
+                          </thead>
+                          <tbody class="text-gray-800 dark:text-gray-100">
+                            <tr>
+                              <td class="p-3 border">Production Lead Time</td>
+                              <td class="p-3 border">63999.0</td>
+                              <td class="p-3 border">1066.7</td>
+                              <td class="p-3 border">44.4</td>
+                            </tr>
+                            <tr>
+                              <td class="p-3 border">Production Lead Time*</td>
+                              <td class="p-3 border">3519.0</td>
+                              <td class="p-3 border">58.7</td>
+                              <td class="p-3 border">2.4</td>
+                            </tr>
+                            <tr>
+                              <td class="p-3 border">Value-Added Time</td>
+                              <td class="p-3 border">2940.0</td>
+                              <td class="p-3 border">49.0</td>
+                              <td class="p-3 border">2.0</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+              
+                  </div>
+                </div>
+              </section>
+
+  </main>
+  <Footer />
+</Layout>
