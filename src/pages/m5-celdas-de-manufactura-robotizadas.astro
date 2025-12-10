@@ -26,7 +26,7 @@ import HeroSection from '../components/HeroSection.astro';
     <section class="py-16 bg-white dark:bg-gray-800">
         <div class="container-custom">
           <div class="text-center max-w-3xl mx-auto mb-10 px-4">
-            <span class="inline-block px-4 py-1 rounded-full bg-accent-50 text-info-50 dark:bg-accent-950 dark:text-100 font-medium text-sm mb-4">
+            <span class="inline-block px-4 py-1 rounded-full bg-accent-50 text-info-50 dark:bg-accent-950 dark:text-info-100 font-medium text-sm mb-4">
               Procesos susceptibles de automatización
             </span>
           </div>
@@ -226,7 +226,7 @@ import HeroSection from '../components/HeroSection.astro';
     <section class="py-16 bg-white dark:bg-gray-900">
       <div class="container-custom">
         <div class="text-center max-w-3xl mx-auto mb-10 px-4">
-          <span class="inline-block px-4 py-1 rounded-full bg-primary-100 text-primary-600 font-medium text-sm mb-4">
+          <span class="inline-block px-4 py-1 rounded-full bg-accent-50 text-info-50 dark:bg-accent-950 dark:text-info-100 font-medium text-sm mb-4">
             Selección del modelo de robot
           </span>
           <h2 class="text-2xl md:text-3xl mb-4 text-gray-900 dark:text-white">
@@ -265,7 +265,7 @@ import HeroSection from '../components/HeroSection.astro';
 
         <div class="container-custom">
           <div class="text-center max-w-3xl mx-auto mb-10 px-4">
-            <span class="inline-block px-4 py-1 rounded-full bg-primary-100 text-primary-600 font-medium text-sm mb-4">
+            <span class="inline-block px-4 py-1 rounded-full bg-accent-50 text-info-50 dark:bg-accent-950 dark:text-info-100 font-medium text-sm mb-4">
               Elementos de la celda robotizada
             </span>
         </div>
@@ -355,15 +355,40 @@ import HeroSection from '../components/HeroSection.astro';
     <section class="py-16 bg-white dark:bg-gray-900">
       <div class="container-custom">
         <div class="text-center max-w-3xl mx-auto px-4">
-          <span class="inline-block px-4 py-1 rounded-full bg-primary-100 text-primary-600 font-medium text-sm mb-4">
+          <span class="inline-block px-4 py-1 rounded-full bg-accent-50 text-info-50 dark:bg-accent-950 dark:text-info-100 font-medium text-sm mb-4">
             Modelo 3D en simulación
           </span>
           <h2 class="text-2xl md:text-3xl mb-4 text-gray-900 dark:text-white">
             Modelo de la celda en RobotStudio
           </h2>
 
+      <!-- Modelo Robot -->
+      <div>
+        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4 text-center">
+          Modelo celda robotica
+        </h3>
+        <div class="flex justify-center mb-6">
+          <img src="../images/celda.png" alt="Indicadores KPI" class="w-[600px] rounded-lg shadow-md object-contain" />
+        </div>
+      </div>
+
+      <!-- Modelo Robot -->
+      <div>
+        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4 text-center">
+          Gripper del robot
+        </h3>
+        <div class="flex justify-center mb-6">
+          <img src="../images/gripper.png" alt="Indicadores KPI" class="w-[600px] rounded-lg shadow-md object-contain" />
+        </div>
+      </div>
 
 
+    <div class="flex justify-center">
+							  <video controls preload="auto" width="1200" height="600" >
+									  <source src="../videos/rutina1.mp4" type="video/mp4" />
+									  <p> Your browser does not support this vide format </p>
+							  </video>
+					  </div>
 
         </div>
       </div>
@@ -375,7 +400,7 @@ import HeroSection from '../components/HeroSection.astro';
     <section class="py-16 bg-white dark:bg-gray-800">
       <div class="container-custom">
         <div class="text-center max-w-3xl mx-auto mb-10 px-4">
-          <span class="inline-block px-4 py-1 rounded-full bg-primary-100 text-primary-600 font-medium text-sm mb-4">
+          <span class="inline-block px-4 py-1 rounded-full bg-accent-50 text-info-50 dark:bg-accent-950 dark:text-info-100 font-medium text-sm mb-4">
             Análisis de riesgos
           </span>
           <h2 class="text-2xl md:text-3xl mb-4 text-gray-900 dark:text-white">
