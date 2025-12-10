@@ -6,7 +6,7 @@ import alpinejs from '@astrojs/alpinejs';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://nguiom.github.io/test.github.io',
-  base: '\Los4Automaticos',
+  base: '/test.github.io',
   vite: {
     plugins: [tailwindcss()],
   },
