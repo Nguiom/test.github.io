@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HeroSection from '../components/HeroSection.astro';
+---
+
+<Layout title="Los4Automaticos - Módulo 3: Planeación de Proyecto" description="Descubre cómo planificar y gestionar tu proyecto de manera efectiva con herramientas avanzadas como Bitrix24 y Microsoft Project. Aprende a actualizar cronogramas y adaptarte a cambios en las actividades.">
+  <Header />
+  <main>
+    <HeroSection 
+      title="Módulo 3: Planeación de Proyecto" 
+      highlightText="Módulo 3:"
+      description="Este módulo contempla la elaboración y actualización del cronograma del proyecto mediante herramientas de gestión. Se enfatiza el seguimiento continuo y la actualización del cronograma ante cualquier cambio en las actividades o entregables. También se presenta la estructura de desgloce del trabajo."
+    />
+
+
+
+
+
+
+    <section class="py-16 bg-white dark:bg-gray-800">
+		<div class="container-custom">
+        			  <div>
+        						
+        					    <div class="text-center max-w-3xl mx-auto mb-10 px-4">
+                								<span class="inline-block px-4 py-1 rounded-full bg-accent-50 text-info-50 dark:bg-accent-950 dark:text-info-100 font-medium text-sm mb-4">
+                								  EDT
+                								</span>
+        					    </div>
+        					  	<div class="text-center max-w-3xl mx-auto mb-8 px-4">
+        									<p class="text-gray-600 dark:text-gray-300">
+        											Estructura de Desglose del Trabajo.
+        									</p>
+          						</div>
+          						<div class="flex justify-center">
+                        			<img src="../images/APM_EDT.png" alt="APM_EDT" class="w-[1200px] rounded-lg shadow-md object-contain" />
+                      </div>
+        			  </div>
+		</div>
+	  </section>
+
+
+
+
+
+
+
+
+
+
+    <section class="py-16 bg-white dark:bg-gray-900">
+      <div class="container-custom">
+
+        <div class="text-center max-w-3xl mx-auto mb-8 md:mb-8 px-4">
+          <span class="inline-block px-4 py-1 rounded-full bg-accent-50 dark:bg-accent-950 text-info-50 dark:text-info-100 font-medium text-sm mb-4">
+            Programación del proyecto
+          </span>
+          <h2 class="text-2xl md:text-3xl mb-4 md:mb-6 text-gray-900 dark:text-white">Planeación de Proyecto</h2>
+          <p class="text-gray-600 dark:text-gray-300">
+            El cronograma se realizo con la herramienta Jira, donde se pueden ver las diferentes actividades. Este se realizo de acuerdo a estimaciones generales de la duración del desarrollo de los elementos del proyecto, siendo la de mayor importancia el del envio de los equipos por transporte maritimo el cual, sino se presentan largos improvistos, pueden durar entre 1-2 meses en el transporte y nacionalización de la carga. Por cuestiones del manejo del proyecto en jira no se puede compartir el cronograma a todo el mundo, por lo que se comparte la foto de este en jira donde se puede evidenciar una parte de este y uno hecho en lucidchart donde se ve la totalidad del proyecto.
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+
+          <div class="rounded-lg overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
+            <img src="https://i.imgur.com/GTDpPhH.png" alt="Cronograma" class="w-full h-auto" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container-custom max-w-4xl">
+        <div class="container-custom">
+
+        <div class="text-center max-w-3xl mx-auto mb-2 md:mb-8 px-4">
+          <span class="inline-block px-4 py-1 rounded-full bg-accent-50 dark:bg-accent-950 text-info-50 dark:text-info-100 font-medium text-sm mb-4">
+            Módulo 3
+          </span>
+          <h2 class="text-2xl md:text-3xl mb-4 md:mb-2 text-gray-900 dark:text-white">Links</h2>
+          <p class="text-gray-600 dark:text-gray-300">
+            Documentación y recursos del módulo.
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold mb-4">Ver cronograma</h2>
+          <a 
+            href="https://lucid.app/lucidspark/74a89c67-ddae-4972-9310-d962c2e057a8/edit?viewport_loc=-132%2C-167%2C5172%2C2896%2CuDe-dIt-NWfS&invitationId=inv_5a701ecd-084b-48dd-92a5-dcff5ab007ec"
+            target="_blank"
+            rel="noopener"
+            class="inline-block bg-accent-300 dark:bg-accent-600 text-info-200 dark:text-info-300 px-6 py-3 rounded-lg shadow hover:bg-info-400 dark:hover:bg-info-600 transition">
+            Abrir en Lucidchart
+          </a>
+
+          <h2 class="text-2xl font-bold mb-4 mt-4">Ver documentación</h2>
+          <a 
+            href="https://github.com/JoseAlejandroRosero/Los4Automaticos"
+            target="_blank"
+            rel="noopener"
+            class="inline-block bg-accent-300 dark:bg-accent-600 text-info-50 dark:text-info-100 px-6 py-3 rounded-lg shadow hover:bg-info-400 dark:hover:bg-info-600 transition">
+            Documentación del módulo en github
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+

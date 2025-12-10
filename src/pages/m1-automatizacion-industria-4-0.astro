@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HeroSection from '../components/HeroSection.astro';
+import Pyramid from '../components/Pyramid.astro';
+import '../styles/Pyramid.css';
+---
+
+<Layout title="Los4Automaticos - Módulo 1: Automatización e Industria 4.0" description="Explora el Módulo 1 de Los4Automaticos, donde presentamos diagramas de instrumentación de algunos procesos, identificando sensores y actuadores clave, así como la arquitectura de control y sus comunicaciones. Integrando tecnologías de Industria 4.0 como el gemelo digital y el IIoT a tráves del uso de contenedores en la Nube de software SCADA.">
+  <Header />
+  <main>
+
+    <HeroSection 
+      title="Módulo 1: Automatización e Industria 4.0" 
+      highlightText="Módulo 1:"
+	  description="En este módulo se presentarán los diagramas de instrumentación de cada proceso, identificando  sus sensores y actuadores clave, así como la arquitectura de control y comunicaciones, el montoreo de los sitemas, incluyendo los protocolos y niveles de automatización establecidos en la norma ISO-95. El obejetivo es la integracióbn de tecnologías de Industria 4.0 como lo son la virtualización de fábrica, el IIoT y el Cloud Computing, con tecnologías modernas de MES como Power BI y contenedores en Azure. Analizando su propósito e impacto mejorando los indicadores clave de desempeño (KPIs) de producción"
+    />
+    
+
+    <section class="section bg-linear-to-b from-white to-primary-50 dark:from-primary-700 dark:to-primary-800 relative overflow-hidden py-12 md:py-16">
+      <div class="container-custom">
+          <div>
+            <span class="inline-block px-4 py-1 rounded-full bg-accent-50 dark:bg-accent-950 text-info-400 dark:text-info-100 font-medium text-sm mb-4">
+            Diagramas
+            </span>
+            <h2 class="text-2xl md:text-3xl mb-4 md:mb-6 text-gray-900 dark:text-white">Pirámide de la Automatización (Norma ISO-95)</h2>
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
+				<Pyramid/>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Comparison -->
+    <section class="section bg-primary-50 dark:bg-primary-800 py-12 md:py-16">
+      <div class="container-custom">
+        <div class="text-center max-w-3xl mx-auto mb-8 md:mb-16 px-4">
+          <span class="inline-block px-4 py-1 rounded-full bg-accent-50 dark:bg-accent-950 text-info-400 dark:text-info-100 font-medium text-sm mb-4">
+            Comunicaciones
+          </span>
+          <h2 class="text-2xl md:text-3xl mb-4 md:mb-6 text-gray-900 dark:text-white">Arquitecturas de Comunicación y control</h2>
+          <p class="text-secondary-700 dark:text-gray-200">
+		  Utilizamos una arquietectura de control de tipo jerárquica y estática, donde todos los sensores y casi todos los actuadores son controlados por un sólo PLC. Algunas máquinas tendrán sus controladores propios debido a su arquitectura o necesidades como el control de movimiento de alto desempeño. Estos controladores recibirán órdenes y se comunicarán con el controlador principal mediante comunicaciones OPC, donde el PLC principal publicará los tag necesarios en el servidor para que estos sean consumidos por los otros controladores. Por supuesto, para garantizar el máximo tiempo de operación se tendrá mínimo una redundancia en caso de que el PLC principal llegue a fallar.
+		  Algunas de las máquinas más importantes dentro de nuestra propuesta son: un Robot ABB IRB660 con una carga de trabajo de mínimo 130kg con su respectivo controlador ABB IRC5 así como los sensores infrarrojos E3Z-LTY81-D-M1J de la marca OMROM, los cuales permiten la detección de piezas de gran variabilidad de tamaños gracias a su buen rango de lectura. Así mismo en este nivel tenemos un ServoDrive ACS480.
+		  Para los niveles de Planta y Control y manipulación se hace necesario tener un PLC capaz de utilizar rutinas de alto desempeño al mismo tiempo que tenga capacidad de ser programado con rutinas de seguridad. Para ello utilizaremos PLCs de seguridad de Allen-Bradley Compact GuardLogix 5380, programados a través del software Studio 5000. Ádemas de los módulos básicos de alimentación y comunicaciones por Ethernet/IP como el 5069-L350ERMS2, también vamos a necesitar módulos de entradas Digitales 5069-IB8S y módulo de salidas Digitales 5069-OBV8S. Esto es porque queremos que nuestra propuesta de automatización tenga una arquietectura de control completamente segura, no sólo en la lógica de la misma y en elementos de mitigación de riesgo como jaulas o barreras infrarrojas, sino también en las entradas y salidas de la arquitectura de control de la celda.
+		  En el caso de las entradas y salidas analógicas, el compact guardlogix no posee dichos módulos y tampoco se utilizxan entradas ni salidas de tipo analógico dentro de esta propuesta, así que simplemente no las vamos a utilizar.
+
+		  <img src="../images/CompactGuardLogix.png">
+
+		  También utlizaremos el protocol de comunicaciones MQTT para conectar todo con un HMI creado en el software Ignition, de Inductive Automation, el cual estará hosteado en un servido en la nube gracias a los servicios de la plataforma Microsoft Azure. Así cualquier persona, desde cualquier parte del mundo podrá conectarse al servidor, provisto tengan un usuario y contraseña dentro del servidor SCADA.
+		  </p>
+          <p class="text-secondary-700 dark:text-gray-300 text-left">
+		  En el nivel de supervisión de la pirámide, tendremos un servicio en la nube, tal que cualquier persona desde cualquier parte del mundo con conexión a internet sea capaz de observar y monitorizar el proceso.
+		  También vamos a tener de forma permanente una pantalla táctil MT043-WST4B-F1R1C16 la cual tiene como objetivo mostrat información en tiempo real del proceso, muestra mensajes de emergencia y permite al operario interactuar accionar distintas rutinas dentro de la celda sin necesidad de estar cerca de la misma.
+		  <img src="../images/HMI.png">
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section bg-linear-to-b from-primary-50 to-white dark:from-primary-800 dark:to-primary-700 py-12 md:py-16">
+      <div class="container-custom">
+        <div class="text-center max-w-3xl mx-auto px-4">
+          <h2 class="text-2xl md:text-3xl mb-4 md:mb-6 text-gray-900 dark:text-white">Tecnologías de Industria 4.0 y relación con la transformación digital</h2>
+          <p class="text-secondary-800 dark:text-secondary-50 mb-6 md:mb-8 text-left">
+            Se propone integrar la siguientes tecnologías de la industria 4.0 al proyecto con el objetivo de mejorar sus indicadores Clave de Desempeño (KPIs) <br>
+			Digital Twin (Modelo Ciberfísico): Al tener un sistema digitalizado pero que se puede comunicar con el mundo físico, tenemos un sistema en el que se pueden realizar pruebas y observar cambios en los procesos antes de llevarlos a producción real, lo cual acelera la implementación de nuevas tecnologías y ahorra muchísimos costos.<br>
+			IIoT (Internet Industrial de las Cosas):  Utilizando dispositivos I/O, de sensórica y controladores con la capacidad de enviar datos de forma directa a los niveles de monitreamiento y supervisión. Lo que ayuda a circumnavegar uno de los desafíos de la automatización: Comunicar niveles distintos de la pirámide de  Automatización de manera rápida, eficiente y en tiempo real. Un ejemplo de esto podría ser la utilización de sensores que sean capaces de enviar de forma sus datos a un servidor OPC o a un broker MQTT.<br>
+			Software MEs (Integrado con Power BI u otro software): Esto p[ermite a los niveles de Gestión de operaciones de manufactura obtener acceso a los mismos datos que el nivel inmediatamente inferior de forma más rápida y organizada, ademas de ser capaz de generar indicadores en tiempo real de la operación de producción. Indicadores como pueden ser el OEE, el tiempo total de manufactura (Lead Time), etc.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-primary-50 dark:bg-primary-950">
+      <div class="container-custom max-w-4xl">
+        <div class="container-custom">
+
+        <div class="text-center max-w-3xl mx-auto mb-2 md:mb-8 px-4">
+          <span class="inline-block px-4 py-1 rounded-full bg-accent-50 dark:bg-accent-600 text-info-400 dark:text-info-100 font-medium text-sm mb-4">
+            Módulo 1
+          </span>
+          <h2 class="text-2xl md:text-3xl mb-4 md:mb-2 text-info-50 dark:text-info-100">Links</h2>
+          <p class="text-info-400 dark:text-info-500">
+            Documentación y recursos del módulo.
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold mb-4 mt-4">Ver documentación</h2>
+          <a 
+            href="https://github.com/JoseAlejandroRosero/Los4Automaticos"
+            target="_blank"
+            rel="noopener"
+            class="inline-block bg-accent-50 dark:bg-accent-950 text-white hover:text-info-600 dark:hover:text-info-700 px-6 py-3 rounded-lg shadow hover:bg-secondary-50 dark:hover:bg-secondary-950 transition">
+            Documentación del módulo en github
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

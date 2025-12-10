@@ -1,0 +1,339 @@
+---
+//InteractivePyramid.astro
+
+import { Alpine } from 'alpinejs';
+
+interface PyramidLevel {
+  id: number;
+  name: string;
+  description: string;
+  color: string;
+  relevance: string[];
+}
+---
+
+<div 
+  x-data="pyramidData()" 
+  x-init="init()"
+  class="pyramid-container"
+  client:load
+>
+  <!-- Pyramid Image with Clickable Areas -->
+  <div class="relative w-full max-w-4xl mx-auto">
+    <!-- SVG Pyramid with clickable levels -->
+<!-- 
+  ISA-95 Automation Pyramid SVG Component
+  This creates a clickable, interactive pyramid with 6 levels
+-->
+
+<div class="pyramid-wrapper">
+  
+  <svg 
+    viewBox="0 0 800 700" 
+    class="w-full h-auto max-w-4xl mx-auto block"
+    preserveAspectRatio="xMidYMid meet"
+    
+    @click="handlePyramidClick($event)">
+    
+    <polygon
+      id="level4"
+      points="350,200 450,200 400,100"
+	  class="fill-[var(--pyramid-level4-fill-latte)] hover:brightness-110 stroke-2 stroke-[var(--pyramid-level4-stroke-latte)] dark:fill-[var(--pyramid-level4-fill-mocha)] dark:stroke-[var(--pyramid-level4-stroke-mocha)] transition-all duration-200"
+	  :class="{ 'brightness-125 saturate-150': activeLevel === 4 }"
+      data-level="4"
+    />
+    <text 
+      x="400" 
+      y="140" 
+      text-anchor="middle"
+	  class="text-base font-bold fill-[var(--pyramid-level4-text-latte)] dark:fill-[var(--pyramid-level4-text-mocha)] pointer-events-none"
+    >
+      Level 4: Business Planning
+    </text>
+    
+    <!-- Level 4: Business Planning & Logistics (TOp) -->
+    <polygon
+      id="level3"
+      points="300,300 500,300 450,200 350,200"
+	  class="fill-[var(--pyramid-level3-fill-latte)] hover:brightness-110 stroke-2 stroke-[var(--pyramid-level3-stroke-latte)] dark:fill-[var(--pyramid-level3-fill-mocha)] dark:stroke-[var(--pyramid-level3-stroke-mocha)] transition-all duration-200"
+	  :class="{ 'brightness-125 saturate-150': activeLevel === 3 }"
+      data-level="3"
+    />
+    <text x="400" y="250" text-anchor="middle" class="text-base font-bold fill-[var(--pyramid-level3-text-latte)] dark:fill-[var(--pyramid-level3-text-mocha)] pointer-events-none">
+      Level 3: Mfg Operations
+    </text>
+    
+    <!-- Level 3: Manufacturing Operations -->
+    <polygon
+      id="level2"
+      points="250,400 550,400 500,300 300,300"
+	  class="fill-[var(--pyramid-level2-fill-latte)] hover:brightness-110 stroke-2 stroke-[var(--pyramid-level2-stroke-latte)] dark:fill-[var(--pyramid-level2-fill-mocha)] dark:stroke-[var(--pyramid-level2-stroke-mocha)] transition-all duration-200"
+	  :class="{ 'brightness-125 saturate-150': activeLevel === 2 }"
+      data-level="2"
+    />
+    <text x="400" y="350" text-anchor="middle" class="text-base font-bold fill-[var(--pyramid-level2-text-latte)] dark:fill-[var(--pyramid-level2-text-mocha)] pointer-events-none">
+      Level 2: Supervisory Control
+    </text>
+    
+    <!-- Level 2: Supervisory Control -->
+    <polygon
+      id="level1"
+      points="250,400 550,400 600,500 200,500"
+	  class="fill-[var(--pyramid-level1-fill-latte)] hover:brightness-110 stroke-2 stroke-[var(--pyramid-level1-stroke-latte)] dark:fill-[var(--pyramid-level1-fill-mocha)] dark:stroke-[var(--pyramid-level1-stroke-mocha)] transition-all duration-200"
+	  :class="{ 'brightness-125 saturate-150': activeLevel === 1 }"
+      data-level="1"
+    />
+    <text x="400" y="450" text-anchor="middle" class="text-base font-bold fill-[var(--pyramid-level1-text-latte)] dark:fill-[var(--pyramid-level1-text-mocha)] pointer-events-none">
+      Level 1: Control
+    </text>
+    
+    <!-- Level 1: Control Systems -->
+    <polygon
+      id="level0"
+      points="200,500 600,500 650,600 150,600"
+	  class="fill-[var(--pyramid-level0-fill-latte)] hover:brightness-110 stroke-2 stroke-[var(--pyramid-level0-stroke-latte)] dark:fill-[var(--pyramid-level0-fill-mocha)] dark:stroke-[var(--pyramid-level0-stroke-mocha)] transition-all duration-200"
+	  :class="{ 'brightness-125 saturate-150': activeLevel === 0 }"
+      data-level="0"
+    />
+    <text x="400" y="550" text-anchor="middle" class="text-base font-bold fill-[var(--pyramid-level0-text-latte)] dark:fill-[var(--pyramid-level0-text-mocha)] pointer-events-none">
+      Level 0: Process
+    </text>
+    
+    <!-- Level 0: Process (Base) -->
+  </svg>
+</div>
+
+  </div>
+
+  <!-- Flashcards Container -->
+  <div 
+    x-show="activeLevel !== null"
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 transform scale-95"
+    x-transition:enter-end="opacity-100 transform scale-100"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100 transform scale-100"
+    x-transition:leave-end="opacity-0 transform scale-95"
+    class="mt-8 max-w-2xl mx-auto"
+  >
+    <div class="bg-secondary-50 rounded-xl shadow-2xl p-5 border-2" :class="getLevelColor(activeLevel)">
+      <div class="flex justify-between items-start mb-4">
+        <div>
+          <h3 class="text-2xl font-bold text-info-600 dark:text-info-700" x-text="getLevelName(activeLevel)"></h3>
+          <p class="text-info-50 dark:text-info-100" x-text="getLevelDescription(activeLevel)"></p>
+        </div>
+        <button 
+          @click="activeLevel = null"
+          class="text-info-400 hover:text-info-950 text-2xl"
+          aria-label="Close flashcard"
+        >
+          &times;
+        </button>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="font-semibold text-lg mb-2"> Elementos:</h4>
+        <ul class="list-disc pl-5 space-y-1">
+          <template x-for="example in getLevelrelevance(activeLevel)" :key="example">
+            <li x-text="example"></li>
+          </template>
+        </ul>
+      </div>
+
+      <div class="flex justify-between pt-4 border-t">
+        <button
+          @click="previousLevel()"
+          :disabled="activeLevel <= 0"
+          class="px-4 py-2 bg-accent-50 hover:bg-accent-300 text-info-50 dark:text-info-100 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          :class="{ 'hidden': activeLevel <= 0 }"
+        >
+          ← Previous Level
+        </button>
+        
+        <div class="flex space-x-2">
+          <template x-for="level in [0,1,2,3,4]" :key="level">
+            <button
+              @click="activeLevel = level"
+              class="w-8 h-8 rounded-full border-2"
+              :class="[
+                activeLevel === level ? 'scale-125 border-info-50 dark:border-info-100 ring-2 ring-offset-2' : '',
+                getLevelColor(level).replace('border-', 'bg-')
+              ]"
+              :aria-label="`Go to level ${level}`"
+              x-text="level"
+            ></button>
+          </template>
+        </div>
+
+        <button
+          @click="nextLevel()"
+          :disabled="activeLevel >= 4"
+          class="px-4 py-2 bg-accent-50 hover:bg-accent-300 text-info-50 dark:text-info-100 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          :class="{ 'hidden': activeLevel >= 4 }"
+        >
+          Next Level →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Level Selection Buttons (for mobile/alternative navigation) -->
+  <div class="mt-6 flex flex-wrap justify-center gap-2">
+    <template x-for="level in levels" :key="level.id">
+      <button
+        @click="activeLevel = level.id"
+        class="px-4 py-2 rounded-lg font-medium transition-all transform hover:scale-105 active:scale-95"
+        :class="[
+          activeLevel === level.id 
+            ? 'text-info-600 dark:text-info-700 shadow-lg scale-105' 
+            : 'text-info-50 dark:text-info-100 hover:shadow',
+          level.color.replace('fill-', 'bg-')
+        ]"
+        x-text="`Level ${level.id}: ${level.name}`"
+      ></button>
+    </template>
+  </div>
+</div>
+
+<script>
+document.addEventListener('alpine:init', () => {
+  Alpine.data('pyramidData', () => ({
+    // Initial state
+    activeLevel: null,
+    levels: [
+      {
+        id: 0,
+        name: 'Production Process',
+        description: 'También llamado nivel de planta o floor level. Aquí están algunas de las máquinas más importantes dentro de nuestra propuesta',
+        color: 'border-[var(--pyramid-level0-stroke-latte)] dark:border-[var(--pyramid-level0-stroke-mocha)] bg-secondary-50 dark:bg-secondary-950',
+        relevance: [
+				'Robot ABB IRB660 con una carga de trabajo de mínimo 130kg con su respectivo controlador ABB IRC5',
+				'Sensores infrarrojos E3Z-LTY81-D-M1J de la marca OMROM, los cuales permiten la detección de piezas de gran variabilidad de tamaños gracias a su buen rango de lectura.',
+				'También habrán cortinas de seguridad 1220‑A‑220NB a la entrada de la celda robótcia y una jaula alrededor de la misma a la cual sólo se podrá entrar con una tarjeta de autorización, esto permite que sólo entre el personal de mantenimiento en casos donde sea necesario y evita riesgos y accidentes que pueden ser muy costosos',
+        ]
+      },
+      {
+        id: 1,
+		name: 'Field Control',
+		description: 'Donde los Controladores Industriales (PLCs y PACs) manejan las máquinas',
+        color: 'border-[var(--pyramid-level1-stroke-latte)] dark:border-[var(--pyramid-level1-stroke-mocha)] bg-secondary-50 dark:bg-secondary-950',
+        relevance: [
+				'Utilizamos una arquietectura de control de tipo jerárquica y estática, donde todos los sensores y casi todos los actuadores son controlados por un sólo PLC. Algunas máquinas tendrán sus controladores propios debido a su arquitectura o necesidades como el control de movimiento de alto desempeño. Estos controladores recibirán órdenes',
+				'Comunicaciones mediante protocolo OPC, donde el PLC principal publicará los tag necesarios en el servidor para que estos sean consumidos por los otros controladores. Por supuesto, para garantizar el máximo tiempo de operación se tendrá mínimo un servidor de redundancia en caso de que el servidor principal llegue a fallar.',
+				'Para los niveles de Planta y Control y manipulación se hace necesario tener un PLC capaz de utilizar rutinas de alto desempeño al mismo tiempo que tenga capacidad de ser programado con rutinas de seguridad. Para ello utilizaremos PLCs de seguridad de Allen-Bradley Compact GuardLogix 5380, programados a través del software Studio 5000.',
+				'Ádemas de los módulos básicos de alimentación y comunicaciones por Ethernet/IP como el 5069-L350ERMS2, también vamos a necesitar módulos de entradas Digitales 5069-IB8S y módulo de salidas Digitales 5069-OBV8S. Esto es porque queremos que nuestra propuesta de automatización tenga una arquietectura de control completamente segura, no sólo en la lógica de la misma, sino también en las entradas y salidas de la arquitectura de control de la celda.',
+				'En el caso de las entradas y salidas analógicas, el compact guardlogix no posee dichos módulos y tampoco se utilizan entradas ni salidas de tipo analógico dentro de esta propuesta, así que sencillamente no se van a tener en cuenta por el momento.',
+        ]
+      },
+      {
+        id: 2,
+        name: 'Monitoring and Supervision',
+		description: 'Aquí es donde se encuentran los sistemas SCADA (System Control And Data Acquisition) y HMI(Humasn Machine Interface)',
+        color: 'border-[var(--pyramid-level2-stroke-latte)] dark:border-[var(--pyramid-level2-stroke-mocha)] bg-secondary-50 dark:bg-secondary-950',
+        relevance: [
+				'Conectaremos la planta con un servidor de SCADA (Supervisory Control And Data Acquisition) gracias al software Ignition de Inductive Automation',
+				'Además del servidor local, tendremos un contenedor en la nube gracias a los servicios de la plataforma Microsoft Azure. Así cualquier persona, desde cualquier parte del mundo podrá conectarse al servidor, provisto tengan un usuario y contraseña dentro del servidor SCADA.',
+          'La comunicación entre el servidor ignition local y el contenedor en la nube se hará mediante el protocolo MQTT',
+				'El software Ignition también nos permite crear un HMI que se puede utilizar para facilitar la labor de supervisión, propia de los sistemas SCADA, El cual podrá realizar acciones de control básicas y tendrá acceso a datos históricos y a Alarmas',
+				'Además para la realización de pruebas y simulaciones sin necesidad de alterar la planta se contará con un gemelo digital de la celda en el software de simulaciónSiemens NX',
+				'Este gemelo digital también podrá ser controlado mediante el HMI y un emulador de PLC, gracias  de nuevo, al protocol MQTT.',
+        ]
+      },
+      {
+        id: 3,
+        name: 'Manufacturing Operations Management',
+		description: 'Sistemas MES (Manufacturing Execution Systrem)',
+        color: 'border-[var(--pyramid-level3-stroke-latte)] dark:border-[var(--pyramid-level3-stroke-mocha)] bg-secondary-50 dark:bg-secondary-950',
+        relevance: [
+          'Aquí tendremos un software MES (Manufacturing Execution Systems)',
+				'La propuesta es realizarlo mediante el software de Power BI de microsoft, ya que tiene una excelente acoplamiento con los servicios en la nube de microsoft azure',
+        ]
+      },
+      {
+        id: 4,
+        name: 'Business Planning & Logistics',
+		description: 'La herramienta a usar es el ERP (Enterprise Resource Planning)',
+        color: 'border-[var(--pyramid-level4-stroke-latte)] dark:border-[var(--pyramid-level4-stroke-mocha)] bg-secondary-50 dark:bg-secondary-950',
+        relevance: [
+          'ERP (Enterprise Resource Planning)',
+		  'No existe de momento una propuesta sólida del mismo',
+        ]
+      },
+    ],
+
+    // Initialize component
+    init() {
+      console.log('Pyramid component initialized');
+    },
+
+    // Handle global keyboard events
+    handleGlobalKeydown(e) {
+      if (this.activeLevel === null) return;
+      
+      switch(e.key) {
+        case 'ArrowRight':
+        case 'ArrowDown':
+          if (this.activeLevel < 4) {
+            e.preventDefault();
+            this.nextLevel();
+          }
+          break;
+        case 'ArrowLeft':
+        case 'ArrowUp':
+          if (this.activeLevel > 0) {
+            e.preventDefault();
+            this.previousLevel();
+          }
+          break;
+        case 'Escape':
+          e.preventDefault();
+          this.activeLevel = null;
+          break;
+      }
+    },
+
+    // Handle pyramid click
+    handlePyramidClick(event) {
+      const target = event.target;
+      if (target.dataset.level) {
+        const level = parseInt(target.dataset.level);
+        this.activeLevel = level;
+      }
+    },
+
+    // Get level information
+    getLevelName(levelId) {
+      const level = this.levels.find(l => l.id === levelId);
+      return level ? `Level ${levelId}: ${level.name}` : '';
+    },
+
+    getLevelDescription(levelId) {
+      const level = this.levels.find(l => l.id === levelId);
+      return level ? level.description : '';
+    },
+
+    getLevelrelevance(levelId) {
+      const level = this.levels.find(l => l.id === levelId);
+      return level ? level.relevance : [];
+    },
+
+    getLevelColor(levelId) {
+      const level = this.levels.find(l => l.id === levelId);
+      return level ? level.color : 'border-warning-50 dark:border-warning-950';
+    },
+
+    // Navigation methods
+    nextLevel() {
+      if (this.activeLevel < 4) {
+        this.activeLevel++;
+      }
+    },
+
+    previousLevel() {
+      if (this.activeLevel > 0) {
+        this.activeLevel--;
+      }
+    }
+  }));
+});
+</script>
